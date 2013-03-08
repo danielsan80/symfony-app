@@ -50,3 +50,12 @@ I followed this docs:
 * http://sonata-project.org/bundles/admin/master/doc/reference/configuration.html
 * http://sonata-project.org/bundles/user/master/doc/reference/installation.html
 * http://sonata-project.org/bundles/user/master/doc/reference/advanced_configuration.html
+
+
+googleauth
+----------------------------------
+Starting from **users** I installed the FOSGoogleBundle
+so I can register in mine application in a click.
+I followed this docs:
+* https://github.com/bitgandtter/FOSGoogleBundle
+* 
