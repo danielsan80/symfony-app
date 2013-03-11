@@ -58,4 +58,9 @@ Starting from **users** I installed the FOSGoogleBundle
 so I can register in mine application in a click.
 I followed this docs:
 * https://github.com/bitgandtter/FOSGoogleBundle
-* 
+
+
+admin_google
+----------------------------------
+Marging from **admin** and **googleauth** I get both the SonataAdminBundle then the FOSGoogleBundle
+features.
