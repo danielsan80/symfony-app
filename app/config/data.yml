@@ -1,0 +1,5 @@
+emails:
+  from:
+    address: info@arbo.it
+    name: Example
+  to: info@example.com

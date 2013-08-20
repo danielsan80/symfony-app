@@ -13,3 +13,11 @@ parameters:
 
     locale:            en
     secret:            ThisTokenIsNotSoSecretChangeIt
+
+    
+    domain:
+        database:
+            host: 127.0.0.1
+            nome: olddb
+            username: root
+            password: ~
