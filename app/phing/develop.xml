@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="symfony" >
+
+    <target name="assetic-dump"
+            description="Run assetic dump in production env">
+        <exec command="php app/console assetic:dump --env=prod --no-debug" outputProperty="return" />
+    </target>
+    
+    <target name="assets-install"
+            description="Run assets install">
+        <exec command="php app/console assets:install web --symlink --relative" outputProperty="return" />
+    </target>
+    
+    <target name="cc-prod"
+            description="Run cache clear in production env">
+        <exec command="php app/console cache:clear --env=prod" outputProperty="return" />
+    </target>
+    
+    <target name="cc-dev"
+            description="Run cache clear in dev env">
+        <exec command="php app/console cache:clear --env=dev" outputProperty="return" />
+    </target>
+    <target name="cc-test"
+            description="Run cache clear in test env">
+        <exec command="php app/console cache:clear --env=test" outputProperty="return" />
+    </target>
+    
+    <target name="cc"
+            description="Run cache clear in dev env">
+        <exec command="rm -Rf app/cache/*" outputProperty="return" />
+    </target>
+
+    <target name="design"
+            description="Run design task (cache,assets,assetic)">
+        <phingcall target="less-touch" />
+        <phingcall target="cc" />
+        <phingcall target="assets-install" />
+        <phingcall target="assetic-dump" />
+    </target>
+    
+    <target name="less-touch"
+            description="touch the index.less file">
+        <exec command='echo " " >> ${less.index}'  outputProperty="return" />
+        <exec command='echo " " >> ${less.main}'  outputProperty="return" />
+    </target>
+ 
+    <target name="dbreset" >
+        <exec command='php app/console doctrine:database:drop --force'  outputProperty="return" />
+        <exec command='php app/console doctrine:database:create'  outputProperty="return" />
+        <exec command="php app/console doctrine:migrations:migrate --no-interaction" outputProperty="return" /> 
+        <exec command='php app/console fos:user:create admin admin@gmail.com admin'  outputProperty="return" />
+        <exec command='php app/console fos:user:promote admin ROLE_SUPER_ADMIN'  outputProperty="return" />
+    </target>
+    
+    <target name="fixtures"
+            description="Load Fixtures">
+        <exec command="php app/console doctrine:fixtures:load" outputProperty="return" />
+    </target>
+
+</project>
