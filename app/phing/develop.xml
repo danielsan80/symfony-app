@@ -49,6 +49,8 @@
         <exec command='php app/console doctrine:database:drop --force'  outputProperty="return" />
         <exec command='php app/console doctrine:database:create'  outputProperty="return" />
         <exec command="php app/console doctrine:migrations:migrate --no-interaction" outputProperty="return" /> 
+        <exec command='php app/console fos:user:create admin admin@gmail.com admin'  outputProperty="return" />
+        <exec command='php app/console fos:user:promote admin ROLE_SUPER_ADMIN'  outputProperty="return" />
     </target>
     
     <target name="fixtures"
