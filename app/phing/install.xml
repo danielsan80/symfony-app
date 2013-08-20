@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="symfony-app" >
+    
+    <target name="composer-update">
+        <exec command="COMPOSER_PROCESS_TIMEOUT=4000 php composer.phar update" />
+    </target>
+    
+    <target name="composer-install">
+        <exec command="COMPOSER_PROCESS_TIMEOUT=4000 php composer.phar install" />
+    </target>
+    
+    <target name="chmod"
+            description="Set filesystem permission">
+
+        <exec command="chmod -R 777 app/cache app/logs" />
+        <exec command="setfacl -R -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs" />
+        <exec command="setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs" />
+    </target>
+ 
+    <target name="configuration">
+        <exec command="cp -n app/config/parameters.yml.dist app/config/parameters.yml" />
+        <exec command="cp -n app/phing/build.properties.dist app/phing/build.properties" />
+    </target>
+    
+    <target name="install" >
+        <phingcall target="composer-install" />
+        <phingcall target="chmod" />
+        <phingcall target="configuration" />
+    </target>
+    
+</project>
