@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="arbo" >
+    
+    <target name="server" >
+        <exec command="java -jar bin/selenium-server-standalone-2.31.0.jar" />
+    </target>
+    
+    <target name="selenium" >
+        <phingcall target="server" />
+    </target>
+
+
+</project>
