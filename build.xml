@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="symfony" default="build">
+<project name="symfony" default="install">
     <property file="app/phing/build.properties"/>
     <import file="app/phing/install.xml" />
     <import file="app/phing/develop.xml" />
