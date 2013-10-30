@@ -1,9 +1,16 @@
 {
+    "config": {
+        "process-timeout": "600"
+    },
     "name": "symfony/framework-standard-edition",
     "description": "The \"Symfony Standard Edition\" distribution",
-    "autoload": {
-        "psr-0": { "": "src/" }
-    },
+    "authors": [
+        {
+            "name": "Danilo Sanchi",
+            "email": "d.sanchi@iabadabadu.it"
+        }
+    ],
+    
     "require": {
         "php": ">=5.3.3",
         "symfony/symfony": "2.1.*",
@@ -20,11 +27,20 @@
         "jms/di-extra-bundle": "1.1.*",
         "kriswallsmith/assetic": "1.1.*@dev",
         
-        "leafo/lessphp": "dev-master",
+        "friendsofsymfony/user-bundle": "*",
         
-        "friendsofsymfony/user-bundle": "*"
+        "doctrine/doctrine-migrations-bundle": "dev-master",
+        "stof/doctrine-extensions-bundle": "~1.1@dev",
+        
+        "leafo/lessphp": "dev-master"
         
     },
+    
+    "require-dev": {
+        "liip/functional-test-bundle": "dev-master",
+        "doctrine/doctrine-fixtures-bundle": "dev-master"
+    },
+    
     "scripts": {
         "post-install-cmd": [
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
@@ -39,6 +55,7 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
         ]
     },
+    "minimum-stability": "dev",
     "extra": {
         "symfony-app-dir": "app",
         "symfony-web-dir": "web",
@@ -46,5 +63,18 @@
         "branch-alias": {
             "dev-master": "2.1-dev"
         }
+    },
+    
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:danielsan80/EntityAudit.git"
+        }
+    ],
+
+    "autoload": {
+        "psr-0": {
+            "": "src"
+            }
     }
 }
